@@ -1,0 +1,6 @@
+C:/Users/Nguyen Phong/Documents/Stm32/Supor/Core/Src/main.c:66:5:main	1
+C:/Users/Nguyen Phong/Documents/Stm32/Supor/Core/Src/main.c:127:6:SystemClock_Config	3
+C:/Users/Nguyen Phong/Documents/Stm32/Supor/Core/Src/main.c:167:13:MX_TIM1_Init	7
+C:/Users/Nguyen Phong/Documents/Stm32/Supor/Core/Src/main.c:242:13:MX_GPIO_Init	1
+C:/Users/Nguyen Phong/Documents/Stm32/Supor/Core/Src/main.c:269:6:blind_led	3
+C:/Users/Nguyen Phong/Documents/Stm32/Supor/Core/Src/main.c:288:6:Error_Handler	1

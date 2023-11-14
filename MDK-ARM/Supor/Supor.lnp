@@ -1,0 +1,23 @@
+--cpu Cortex-M3
+"supor\startup_stm32f103xb.o"
+"supor\main.o"
+"supor\stm32f1xx_it.o"
+"supor\stm32f1xx_hal_msp.o"
+"supor\stm32f1xx_hal_gpio_ex.o"
+"supor\stm32f1xx_hal_tim.o"
+"supor\stm32f1xx_hal_tim_ex.o"
+"supor\stm32f1xx_hal.o"
+"supor\stm32f1xx_hal_rcc.o"
+"supor\stm32f1xx_hal_rcc_ex.o"
+"supor\stm32f1xx_hal_gpio.o"
+"supor\stm32f1xx_hal_dma.o"
+"supor\stm32f1xx_hal_cortex.o"
+"supor\stm32f1xx_hal_pwr.o"
+"supor\stm32f1xx_hal_flash.o"
+"supor\stm32f1xx_hal_flash_ex.o"
+"supor\stm32f1xx_hal_exti.o"
+"supor\system_stm32f1xx.o"
+--strict --scatter "Supor\Supor.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Supor.map" -o Supor\Supor.axf
