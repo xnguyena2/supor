@@ -61,9 +61,9 @@ Action_step dry_beam_cock_step[] = {
 				{.time_stamp = 0, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
 				{.time_stamp = 0, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},//start heat
 				{.time_stamp = 30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
-				{.time_stamp = 60*13, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
+				{.time_stamp = 60*14, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
 				{.time_stamp = 60*14, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
-				{.time_stamp = 60*14+30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
+				{.time_stamp = 60*14+50, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
 				{.time_stamp = 60*17, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},//start heat
 				{.time_stamp = 60*18, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
 				{.time_stamp = 60*18, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
@@ -140,23 +140,13 @@ int main(void)
 	//HAL_GPIO_WritePin(test_led_GPIO_Port, test_led_Pin, GPIO_PIN_RESET);
   while (1)
   {		
-		if(is_over_flow != 0){
-			continue;
-		}
 		
 		if(HAL_GPIO_ReadPin(over_flow_GPIO_Port, over_flow_Pin) == GPIO_PIN_RESET){
 			HAL_Delay(200);		
 			if(HAL_GPIO_ReadPin(over_flow_GPIO_Port, over_flow_Pin) == GPIO_PIN_RESET){
-				current_index = 0;
-				current_state = 1;					
-				blind_led(current_index, current_state);
-				HAL_TIM_Base_Stop_IT(&htim2);
-				HAL_TIM_Base_Start_IT(&htim2);
-				HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-				HAL_TIM_Base_Stop_IT(&htim3);
+				//if over flow stop heat and moto
 				HAL_GPIO_WritePin(ctr_heat_GPIO_Port, ctr_heat_Pin, GPIO_PIN_RESET);			
-				HAL_GPIO_WritePin(ctr_moto_GPIO_Port, ctr_moto_Pin, GPIO_PIN_RESET);			
-				beep_playing = 1;
+				HAL_GPIO_WritePin(ctr_moto_GPIO_Port, ctr_moto_Pin, GPIO_PIN_RESET);	
 				is_over_flow = 1;
 			}
 		}
@@ -477,7 +467,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : over_flow_Pin */
   GPIO_InitStruct.Pin = over_flow_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(over_flow_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
@@ -517,7 +507,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 void blind_led(uint8_t at, uint8_t state) {	
 	
-	if(is_over_flow != 1 && beep_playing == 1) {
+	if(beep_playing == 1) {
 		beep_playing = 0;
 		HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
 	}
