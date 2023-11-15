@@ -57,11 +57,18 @@ Action_step* current_list_action_step;
 Action_step current_action_step;
 
 
-Action_step dry_beam_cock_step[4] = {
-				{.time_stamp = 0, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},
-				{.time_stamp = 0, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},
-				{.time_stamp = 30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},
-				{.time_stamp = 60*5, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET}
+Action_step dry_beam_cock_step[] = {
+				{.time_stamp = 0, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
+				{.time_stamp = 0, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},//start heat
+				{.time_stamp = 30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
+				{.time_stamp = 60*13, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
+				{.time_stamp = 60*14, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
+				{.time_stamp = 60*14+30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
+				{.time_stamp = 60*17, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},//start heat
+				{.time_stamp = 60*18, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
+				{.time_stamp = 60*18, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
+				{.time_stamp = 60*18+30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
+				{.time_stamp = 60*20, .GPIOx = test_led_GPIO_Port, .GPIO_Pin = test_led_Pin, .state = GPIO_PIN_SET},//finished
 			};
 /* USER CODE END PV */
 
