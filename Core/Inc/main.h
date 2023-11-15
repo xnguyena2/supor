@@ -39,7 +39,7 @@ extern "C" {
 
 typedef struct
 {
-	uint8_t				time_stamp;
+	uint16_t			time_stamp;
 	GPIO_TypeDef 	*GPIOx;
 	uint16_t			GPIO_Pin;
 	GPIO_PinState	state;

@@ -61,7 +61,7 @@ Action_step dry_beam_cock_step[4] = {
 				{.time_stamp = 0, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},
 				{.time_stamp = 0, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},
 				{.time_stamp = 30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},
-				{.time_stamp = 30, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET}
+				{.time_stamp = 60*5, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET}
 			};
 /* USER CODE END PV */
 
@@ -125,6 +125,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	uint8_t select_btn_state = 0;
 	uint8_t start_btn_state = 0;
+	
+	// first beep
+	beep_playing = 1;
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 	
 	//HAL_GPIO_WritePin(test_led_GPIO_Port, test_led_Pin, GPIO_PIN_RESET);
   while (1)
