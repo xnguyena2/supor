@@ -62,12 +62,12 @@ Action_step dry_beam_cock_step[] = {
 				{.time_stamp = 0, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},//start heat
 				{.time_stamp = 30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
 				{.time_stamp = 60*14, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
-				{.time_stamp = 60*14, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
-				{.time_stamp = 60*14+50, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
+				{.time_stamp = 60*15, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
+				{.time_stamp = 60*15+50, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
 				{.time_stamp = 60*17, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},//start heat
-				{.time_stamp = 60*18, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
+				{.time_stamp = 60*17+20, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
 				{.time_stamp = 60*18, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
-				{.time_stamp = 60*18+30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
+				{.time_stamp = 60*19, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
 				{.time_stamp = 60*20, .GPIOx = test_led_GPIO_Port, .GPIO_Pin = test_led_Pin, .state = GPIO_PIN_SET},//finished
 			};
 /* USER CODE END PV */
@@ -146,7 +146,7 @@ int main(void)
 			if(HAL_GPIO_ReadPin(over_flow_GPIO_Port, over_flow_Pin) == GPIO_PIN_RESET){
 				//if over flow stop heat and moto
 				HAL_GPIO_WritePin(ctr_heat_GPIO_Port, ctr_heat_Pin, GPIO_PIN_RESET);			
-				HAL_GPIO_WritePin(ctr_moto_GPIO_Port, ctr_moto_Pin, GPIO_PIN_RESET);	
+				//HAL_GPIO_WritePin(ctr_moto_GPIO_Port, ctr_moto_Pin, GPIO_PIN_RESET);	
 				is_over_flow = 1;
 			}
 		}
