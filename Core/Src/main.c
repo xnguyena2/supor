@@ -58,9 +58,9 @@ Action_step current_action_step;
 
 
 Action_step dry_beam_cock_step[] = {
-				{.time_stamp = 0, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
 				{.time_stamp = 0, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},//start heat
-				{.time_stamp = 30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
+				{.time_stamp = 5, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
+				{.time_stamp = 35, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
 				{.time_stamp = 60*14, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
 				{.time_stamp = 60*15, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
 				{.time_stamp = 60*15+50, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
