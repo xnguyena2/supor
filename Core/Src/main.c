@@ -68,7 +68,13 @@ Action_step dry_beam_cock_step[] = {
 				{.time_stamp = 60*17+20, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
 				{.time_stamp = 60*18, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
 				{.time_stamp = 60*19, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
-				{.time_stamp = 60*20, .GPIOx = test_led_GPIO_Port, .GPIO_Pin = test_led_Pin, .state = GPIO_PIN_SET},//finished
+				{.time_stamp = 60*24, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_SET},//start heat
+				{.time_stamp = 60*24+20, .GPIOx = ctr_heat_GPIO_Port, .GPIO_Pin = ctr_heat_Pin, .state = GPIO_PIN_RESET},//stop heat
+				{.time_stamp = 60*25, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
+				{.time_stamp = 60*25+30, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
+				{.time_stamp = 60*27, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_SET},//start moto
+				{.time_stamp = 60*27+20, .GPIOx = ctr_moto_GPIO_Port, .GPIO_Pin = ctr_moto_Pin, .state = GPIO_PIN_RESET},//stop moto
+				{.time_stamp = 60*30, .GPIOx = test_led_GPIO_Port, .GPIO_Pin = test_led_Pin, .state = GPIO_PIN_SET},//finished
 			};
 /* USER CODE END PV */
 
